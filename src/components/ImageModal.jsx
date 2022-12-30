@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
-import Img from '../assets/fake-img.jpg';
+// import Img from '../assets/fake-img.jpg';
 
-const ImageModal = () => {
+const ImageModal = (props) => {
     const [showModal, setShowModal] = useState(false);
     
   return (
@@ -10,7 +10,7 @@ const ImageModal = () => {
         type='button'
         onClick={() => setShowModal(true)}>
         <img
-          src={Img}
+          src={props.photo}
           alt='logo'
           className='h-72 w-full object-cover rounded-lg shadow-md'
         />
@@ -34,7 +34,7 @@ const ImageModal = () => {
                     </button>
                 </div>
                 <img
-                  src={Img}
+                  src={props.photo}
                   alt='logo'
                   className='w-full h-[300px] object-cover rounded-lg shadow-md'
                 />
