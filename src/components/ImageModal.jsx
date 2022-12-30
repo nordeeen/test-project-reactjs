@@ -6,13 +6,11 @@ const ImageModal = (props) => {
     
   return (
     <div>
-      <button
-        type='button'
-        onClick={() => setShowModal(true)}>
+      <button type='button' onClick={() => setShowModal(true)}>
         <img
           src={props.photo}
           alt='logo'
-          className='h-72 w-full object-cover rounded-lg shadow-md'
+          className='h-72 w-[300px] object-cover rounded-lg shadow-md'
         />
       </button>
       {showModal ? (
@@ -31,12 +29,12 @@ const ImageModal = (props) => {
                   </button>
                   <button className='bg-gray-600 text-white text-sm text-center py-3 px-3 rounded-md'>
                     View Details
-                    </button>
+                  </button>
                 </div>
                 <img
                   src={props.photo}
                   alt='logo'
-                  className='w-full h-[300px] object-cover rounded-lg shadow-md'
+                  className='h-72 w-[500px] object-cover rounded-lg shadow-md'
                 />
               </div>
             </div>

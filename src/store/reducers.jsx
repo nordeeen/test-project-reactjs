@@ -1,8 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import service from "../service";
+import { apiKey } from "../service";
+import { searchImg } from "../service";
 
 export const getImg = createAsyncThunk(
-  'CaVyNcHIKOZkP7cRY-JiipOfzXc2Q-xwd_gXbrnZrmA', 
+  `${apiKey}`, 
   async (param, {rejectValue}) => {
     try {
       const res = await service.getImg();
@@ -13,8 +15,23 @@ export const getImg = createAsyncThunk(
     }
   });
 
+  export const findImg = createAsyncThunk(
+    '/search/photos',
+    async (param, { rejectValue }) => {
+      try {
+        const res = await service.findImg(param.query, param.page);
+        console.log('find img :', res);
+        return res;
+      } catch (error) {
+        rejectValue(error);
+      }
+    }
+  );
+
   const initialState = {
-    images: []
+    images: [],
+    findImages: {},
+    isLoad: false,
   };
 
   const sliceImg = createSlice({
@@ -28,7 +45,12 @@ export const getImg = createAsyncThunk(
     extraReducers: (builder) => {
       builder.addCase(getImg.fulfilled, (state, action) => {
         // console.log(action.payload, '<<<< payload');
-        state.images = action.payload;
+        // state.images = action.payload;
+      });
+
+      builder.addCase(findImg.fulfilled, (state, action) => {
+        console.log(action.payload, '<<<< payload');
+        state.images = action.payload.results;
       });
     }
   })
