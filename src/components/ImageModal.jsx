@@ -1,16 +1,18 @@
 import React, { useState} from 'react'
 
-const ImageModal = (props) => {
+const ImageModal = ({photo}) => {
     const [showModal, setShowModal] = useState(false);
 
   return (
     <div>
       <button type='button' onClick={() => setShowModal(true)}>
-        <img
-          src={props.photo}
-          alt='logo'
-          className='h-72 w-[300px] object-cover rounded-lg shadow-md'
-        />
+        <div className='rounded-lg'>
+          <img
+            src={photo}
+            alt='logo'
+            className='h-72 w-[300px] object-cover rounded-lg shadow-md'
+          />
+        </div>
       </button>
       {showModal ? (
         <>
@@ -20,8 +22,7 @@ const ImageModal = (props) => {
                 <div className='flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t '>
                   <button
                     className='bg-transparent border-0 text-black float-right'
-                    onClick={() => setShowModal(false)}
-                  >
+                    onClick={() => setShowModal(false)}>
                     <span className='text-red-600 opacity-7 h-6 w-6 text-xl'>
                       X
                     </span>
@@ -31,7 +32,7 @@ const ImageModal = (props) => {
                   </button>
                 </div>
                 <img
-                  src={props.photo}
+                  src={photo}
                   alt='logo'
                   className='h-72 w-[500px] object-cover rounded-lg shadow-md'
                 />

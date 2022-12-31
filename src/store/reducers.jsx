@@ -45,7 +45,7 @@ export const getImg = createAsyncThunk(
   const initialState = {
     images: [],
     findImages: {},
-    isLoad: false,
+    isLoading: false,
   };
 
   const sliceImg = createSlice({
