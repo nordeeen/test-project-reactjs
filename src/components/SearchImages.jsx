@@ -1,13 +1,10 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { findImg } from '../store/reducers';
 
 
-
 const SearchImages = () => {
-  const [isLoad, setIsLoad] = useState(false);
   const [dataImg, setDataImg] = useState('');
-
   const dispath = useDispatch();
 
   const searchChangeImg = (e) => {
@@ -20,7 +17,6 @@ const SearchImages = () => {
     dispath(findImg({ query: dataImg, page: 1 }));
     console.log('data img :', dataImg);
     setDataImg('')
-    setIsLoad(true);
   }
 
   return (
@@ -32,16 +28,12 @@ const SearchImages = () => {
        focus:border-blue-500 focus:ring-2 rounded-tl rounded-bl'
           placeholder='Search your images...'
           value={dataImg}
-          onChange={searchChangeImg}
-        />
-        <button
-          className='bg-blue-600 px-6 py-2.5 text-white rounded-tr rounded-br focus:ring-2 focus:ring-blue-300 disabled:bg-gray-400'
-          type='submit'
-        >
+          onChange={searchChangeImg}/>
+        <button className='bg-blue-600 px-6 py-2.5 text-white rounded-tr rounded-br focus:ring-2 focus:ring-blue-300 disabled:bg-gray-400'
+          type='submit' disabled={!dataImg}>
           Search
         </button>
       </form>
-      {isLoad && <p>Showing user for "{dataImg}"</p>}
     </div>
   );
 }
