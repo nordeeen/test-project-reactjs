@@ -1,9 +1,8 @@
-import React, {useState} from 'react'
-// import Img from '../assets/fake-img.jpg';
+import React, { useState} from 'react'
 
 const ImageModal = (props) => {
     const [showModal, setShowModal] = useState(false);
-    
+
   return (
     <div>
       <button type='button' onClick={() => setShowModal(true)}>
